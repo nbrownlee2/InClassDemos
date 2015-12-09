@@ -18,6 +18,20 @@ namespace eRestaurantSystem.BLL
     [DataObject]
     public class AdminController
     {
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+    public List<Table> Table_List()
+        {
+            using (var context = new eRestaurantContext())
+            {
+                //method syntax
+                //return context.SpecialEvents.OrderBy(x => x.Description).ToList();
+
+                //query syntax
+                var results = from item in context.Tables
+                              select item;
+                return results.ToList();
+            } 
+        }
 
         #region Queries
 
